@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  border: none;
+  box-sizing: border-box;
+}
+
+.input {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  background-color: transparent;
+  border: none;
+  padding-left: 10px;
+}
+
+.input:focus {
+  outline: 2px solid rgb(6, 69, 169);
+  z-index: 4;
+}

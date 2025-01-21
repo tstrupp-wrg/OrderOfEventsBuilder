@@ -1,0 +1,36 @@
+/* Apply to the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Apply to the table header */
+th {
+  padding: 10px;
+  text-align: left;
+  background-color: #1a1a1a; /* Light gray background for the header */
+  border: 1px solid #363636; /* Optional border */
+}
+
+/* Apply to the table rows */
+td {
+  text-align: left;
+  border: 1px solid #363636; /* Optional border */
+}
+
+/* Optional: Add hover effect for rows */
+tr:hover {
+  background-color: #434343; /* Slightly darker background on hover */
+}
+
+/* Container styles for better alignment */
+.container {
+  text-align: center; /* Align text to center */
+  vertical-align: middle; /* Vertically center align */
+}
+
+/* Optional: Add spacing between rows */
+tr {
+  height: 40px; /* Adjust as needed for consistent row height */
+}

@@ -1,0 +1,85 @@
+.container {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  height: 100vh;
+  width: 20vw;
+  border-top: solid 1px rgb(50, 50, 50);
+  background-color: rgb(23, 23, 23);
+  z-index: 9999;
+  box-shadow: -10px 0 15px rgba(0, 0, 0, 0.5);
+  animation: slide-in 0.2s ease-out forwards; /* Apply the animation */
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Invisible at the start */
+  }
+  to {
+    transform: translateX(0); /* End at original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.containerClosing {
+  animation: slide-out 0.2s ease-out forwards; /* Reverse animation */
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0); /* Start at original position */
+    opacity: 1; /* Fully visible */
+  }
+  to {
+    transform: translateX(100%); /* Move off-screen to the right */
+    opacity: 0; /* Invisible at the end */
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 15px);
+  height: 80px;
+  padding-top: 10px;
+  padding-left: 15px;
+  border-bottom: solid 1px rgb(52, 52, 52);
+  background-color: rgb(18, 18, 18);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: calc(100% - 30px);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.closeButton {
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  padding: none;
+}
+
+.closeIcon {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  stroke: white; /* Default stroke color */
+  fill: none; /* No fill for the X shape */
+}
+
+.closeButton:hover {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
