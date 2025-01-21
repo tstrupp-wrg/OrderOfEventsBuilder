@@ -1,43 +1,46 @@
-import React from "react";
 import styles from "./EventComponent.module.css";
-import Input from "../Input/Input";
 import DurationPicker from "../DurationPicker/DurationPicker";
-import TimePicker from "../TimePicker/TimePicker";
-import LocalStartTime from "../LocalStartTime/LocalStartTime";
+import Input from "../Input/Input";
 
 export default function EventComponent({
   index,
-  prev,
   data,
-  items,
-  timezone,
-  onDragStart,
-  onDragOver,
-  onDrop,
-  onChange,
+  formatLocalTime,
+  onChangeStartTime,
+  onChangeDuration,
+  onChangeName,
 }) {
+  // Handle changes from DurationPicker
+  const handleDurationChange = (value, type) => {
+    let durationParts = data.duration.split(":").map(Number);
+    if (type === 0) {
+      durationParts[0] = value; // Update hours
+    } else {
+      durationParts[1] = value; // Update minutes
+    }
+    const newDuration = `${String(durationParts[0]).padStart(2, "0")}:${String(
+      durationParts[1]
+    ).padStart(2, "0")}`;
+    onChangeDuration(newDuration, index);
+  };
+
   return (
-    <tr
-      className={styles.container}
-      draggable
-      onDragStart={onDragStart}
-      onDragOver={onDragOver}
-      onDrop={onDrop}
-    >
-      <td>{index + 1}</td>
+    <tr className={styles.container}>
+      <td>{data.event_order}</td>
       <td>
-        <Input value={data.title} />
-      </td>
-      <td>
-        <LocalStartTime
-          items={items}
-          prev={prev}
-          data={data}
-          timezone={timezone}
+        <Input
+          value={data.title}
+          onChange={(e) => onChangeName(e.target.value, index)}
         />
       </td>
       <td>
-        <DurationPicker value={data.duration} onChange={onChange} />
+        <p>{formatLocalTime(data.start_date_time)}</p>
+      </td>
+      <td>
+        <DurationPicker
+          value={data.duration.slice(0, 5)}
+          onChange={handleDurationChange}
+        />
       </td>
     </tr>
   );

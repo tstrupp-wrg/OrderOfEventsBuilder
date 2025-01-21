@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "./DurationPicker.module.css";
 
 export default function DurationPicker({ value, onChange }) {
-  const [hours, setHours] = useState();
-  const [minutes, setMinutes] = useState();
+  const [hours, setHours] = useState("00");
+  const [minutes, setMinutes] = useState("00");
 
   useEffect(() => {
-    setHours(value.split(":")[0]);
-    setMinutes(value.split(":")[1]);
+    const [h, m] = value.split(":");
+    setHours(h);
+    setMinutes(m);
   }, [value]);
 
   return (
@@ -16,7 +17,9 @@ export default function DurationPicker({ value, onChange }) {
         <input
           className={styles.input}
           type="number"
-          value={Number(hours)}
+          min="0"
+          max="23"
+          value={hours}
           onChange={(e) => onChange(e.target.value, 0)}
         />
         <p className={styles.legend}>Hours</p>
@@ -25,7 +28,9 @@ export default function DurationPicker({ value, onChange }) {
         <input
           className={styles.input}
           type="number"
-          value={Number(minutes)}
+          min="0"
+          max="59"
+          value={minutes}
           onChange={(e) => onChange(e.target.value, 1)}
         />
         <p className={styles.legend}>Minutes</p>
